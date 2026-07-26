@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>soup of the day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="top">
+  <h1 class="brand">soup of the day</h1>
+  <p class="tagline">tell me how you're feeling, I'll tell you what to make</p>
+</header>
+
+<section class="mood-picker" id="moodPicker">
+  <button class="mood-card" data-mood="cozy">
+    <span class="mood-icon">☔</span>
+    <span class="mood-label">rainy and cozy</span>
+  </button>
+  <button class="mood-card" data-mood="comfort">
+    <span class="mood-icon">🛋️</span>
+    <span class="mood-label">need comfort</span>
+  </button>
+  <button class="mood-card" data-mood="quick">
+    <span class="mood-icon">⏱️</span>
+    <span class="mood-label">short on time</span>
+  </button>
+  <button class="mood-card" data-mood="light">
+    <span class="mood-icon">🌤️</span>
+    <span class="mood-label">something light</span>
+  </button>
+  <button class="mood-card" data-mood="adventurous">
+    <span class="mood-icon">🌶️</span>
+    <span class="mood-label">feeling adventurous</span>
+  </button>
+</section>
+
+<div class="surprise-row">
+  <button class="ghost-btn" id="surpriseBtn">surprise me instead</button>
+</div>
+
+<main class="recipe-stage" id="recipeStage"></main>
+
+<footer class="foot">
+  <p>a small kitchen of soups &middot; made with care</p>
+</footer>
+
+<script src="recipes.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
