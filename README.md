@@ -14,6 +14,13 @@ Every recipe has:
 - Steps you can follow start to finish, not vague suggestions
 - Checkboxes next to each ingredient, so you can tick things off as you cook
 
+## How it works, in plain English
+
+- Click a mood, and filter the full recipe list down to just the ones tagged with that mood
+- Pick one at random from whatever's left, or from the whole list if you hit "surprise me"
+- Draw a little bowl illustration using that recipe's saved color, then list its ingredients and steps
+- Checking off an ingredient just crosses it out visually, nothing's saved between visits, so it resets next time you open the page
+
 ## Running it
 
 Open `index.html` in a browser, or serve the folder:
