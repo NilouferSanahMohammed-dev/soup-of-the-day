@@ -1,25 +1,29 @@
-# soup-of-the-day 🍲
+# the cookbook 🍲
 
-A cozy little app that picks a soup recipe based on how you're feeling. Pick a mood, get a real recipe with an illustrated bowl to match, ingredients you can check off as you go, and steps you can actually follow.
+What started as a mood-based soup picker grew into an actual personal cookbook. Two dozen real recipes from around the world to start, your own categories, your own additions, and a layout you can recolor to match your kitchen. This repo is still called `soup-of-the-day` since that's where the link already lives, but the app itself outgrew soup a while ago.
 
 ![status](https://img.shields.io/badge/status-active-brightgreen) ![license](https://img.shields.io/badge/license-MIT-blue)
 
 ## What's here
 
-Nine real soup recipes, each tagged with the moods they fit. Tap a mood card like "rainy and cozy" or "short on time" and it picks a matching recipe at random. Hit "surprise me instead" if you don't want to choose a mood at all.
+Twenty-two recipes to start, spanning Italy, Thailand, India, Mexico, Morocco, Vietnam, Korea, Lebanon, Turkey, Spain, Peru, Ethiopia, Jamaica, China, Japan, and a few internet-famous ones (baked feta pasta, dalgona coffee, birria tacos) alongside the classics. Search across all of them, filter by category, or just scroll.
 
-Every recipe has:
-- A little hand-drawn style bowl illustration, colored to match the soup
-- Real ingredients with actual measurements
-- Steps you can follow start to finish, not vague suggestions
-- Checkboxes next to each ingredient, so you can tick things off as you cook
+Every recipe has real ingredients with measurements, steps you can actually follow, and checkboxes so you can tick things off as you cook.
 
 ## How it works, in plain English
 
-- Click a mood, and filter the full recipe list down to just the ones tagged with that mood
-- Pick one at random from whatever's left, or from the whole list if you hit "surprise me"
-- Draw a little bowl illustration using that recipe's saved color, then list its ingredients and steps
-- Checking off an ingredient just crosses it out visually, nothing's saved between visits, so it resets next time you open the page
+- On your very first visit, the built-in recipes and categories get copied once into `localStorage`
+- From that point on, everything you see, including the original built-ins, lives in your own saved copy and can be freely edited or deleted, this isn't a fixed catalog with your additions bolted on the side, it's genuinely all yours to reshape
+- Searching filters by name, cuisine, category, and ingredients all at once
+- Adding a category just adds a name to a saved list, and it shows up as a filter chip immediately
+- Customizing the theme (accent color, background, grid or list layout) writes straight to CSS variables, so the whole page updates live as you adjust it
+
+## Making it yours
+
+- **Add a recipe**: the "+ add a recipe" button opens a form for name, cuisine, category, time, servings, an accent color, and ingredients and steps (one per line each)
+- **Add a category**: type a name into the "+ new category" field under the filter chips, hit enter, done
+- **Edit or delete anything**: open any recipe and use the edit or delete buttons, this works on the built-in recipes too, not just ones you've added
+- **Customize the look**: the "customize" button in the header lets you pick an accent color, a background color, and switch between a grid or list layout
 
 ## Running it
 
@@ -29,28 +33,14 @@ Open `index.html` in a browser, or serve the folder:
 npx serve .
 ```
 
-## Adding your own recipes
+## Where your data lives
 
-All the recipes live in `recipes.js` as a plain array. Each one looks like this:
+Everything (your recipes, your categories, your theme) is saved to `localStorage`, so it's private to whatever browser you're using and won't follow you to a different device. If you want to back it up, your browser's dev tools will show the `cookbook-recipes-v1`, `cookbook-categories-v1`, and `cookbook-theme-v1` keys under localStorage.
 
-```js
-{
-  name: "your soup",
-  moods: ["cozy", "quick"],
-  time: "30 min",
-  servings: 4,
-  color: "#d9a441",
-  ingredients: ["1 onion, chopped", "..."],
-  steps: ["First do this.", "Then do that."],
-}
-```
+## Adding recipes in bulk
 
-The `color` is what tints that soup's bowl illustration, so pick something that feels right for it. A recipe can belong to more than one mood, red lentil soup shows up under both "comfort" and "quick" because honestly, it's both.
-
-## Why moods instead of just a recipe list
-
-I wanted picking a soup to feel like asking a friend what to make, not scrolling through a long list. The mood cards do the narrowing down for you, and "surprise me" is there for when you just want something decided for you.
+If you'd rather seed a bunch of recipes at once instead of using the form, `recipes.js` has the full `BUILT_IN_RECIPES` array in the exact shape the app expects, copy that structure for your own list. Just know that file only seeds the *very first* visit, once `localStorage` has data, `recipes.js` is no longer read.
 
 ## License
 
-MIT. Add your own soups, your own moods, your own kitchen.
+MIT. Cook whatever you want, from wherever you want.

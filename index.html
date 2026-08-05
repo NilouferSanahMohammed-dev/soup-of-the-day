@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>soup of the day</title>
+<title>the cookbook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
@@ -11,42 +11,110 @@
 <body>
 
 <header class="top">
-  <h1 class="brand">soup of the day</h1>
-  <p class="tagline">tell me how you're feeling, I'll tell you what to make</p>
+  <div class="top-heading">
+    <h1 class="brand">the cookbook</h1>
+    <p class="tagline">started as "soup of the day," kept growing from there</p>
+  </div>
+  <div class="top-actions">
+    <button class="ghost-btn" id="customizeBtn">customize</button>
+    <button class="solid-btn" id="addRecipeBtn">+ add a recipe</button>
+  </div>
 </header>
 
-<section class="mood-picker" id="moodPicker">
-  <button class="mood-card" data-mood="cozy">
-    <span class="mood-icon">☔</span>
-    <span class="mood-label">rainy and cozy</span>
-  </button>
-  <button class="mood-card" data-mood="comfort">
-    <span class="mood-icon">🛋️</span>
-    <span class="mood-label">need comfort</span>
-  </button>
-  <button class="mood-card" data-mood="quick">
-    <span class="mood-icon">⏱️</span>
-    <span class="mood-label">short on time</span>
-  </button>
-  <button class="mood-card" data-mood="light">
-    <span class="mood-icon">🌤️</span>
-    <span class="mood-label">something light</span>
-  </button>
-  <button class="mood-card" data-mood="adventurous">
-    <span class="mood-icon">🌶️</span>
-    <span class="mood-label">feeling adventurous</span>
-  </button>
-</section>
-
-<div class="surprise-row">
-  <button class="ghost-btn" id="surpriseBtn">surprise me instead</button>
+<div class="toolbar">
+  <input type="text" id="searchInput" placeholder="search recipes, ingredients, cuisines&hellip;" class="search-input" />
 </div>
 
-<main class="recipe-stage" id="recipeStage"></main>
+<nav class="category-row" id="categoryRow"></nav>
+<form class="new-category-form" id="newCategoryForm">
+  <input type="text" id="newCategoryInput" placeholder="+ new category" autocomplete="off" />
+</form>
+
+<main class="recipe-grid" id="recipeGrid"></main>
 
 <footer class="foot">
-  <p>a small kitchen of soups &middot; made with care</p>
+  <p>a small kitchen, kept by hand</p>
 </footer>
+
+<!-- Recipe detail modal -->
+<div class="overlay" id="detailOverlay">
+  <div class="detail-card" id="detailCard"></div>
+</div>
+
+<!-- Add / edit recipe modal -->
+<div class="overlay" id="formOverlay">
+  <form class="recipe-form" id="recipeForm">
+    <h2 class="form-title">add a recipe</h2>
+
+    <label>name
+      <input type="text" id="fName" required placeholder="what's it called" />
+    </label>
+
+    <div class="form-row">
+      <label>cuisine
+        <input type="text" id="fCuisine" placeholder="e.g. Italy, fusion, family recipe" />
+      </label>
+      <label>category
+        <select id="fCategory"></select>
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label>time
+        <input type="text" id="fTime" placeholder="30 min" />
+      </label>
+      <label>servings
+        <input type="number" id="fServings" value="4" min="1" />
+      </label>
+      <label>accent color
+        <input type="color" id="fColor" value="#c9772f" />
+      </label>
+    </div>
+
+    <label>ingredients <span class="optional">(one per line)</span>
+      <textarea id="fIngredients" rows="5" placeholder="1 onion, chopped&#10;2 cups stock&#10;..."></textarea>
+    </label>
+
+    <label>steps <span class="optional">(one per line)</span>
+      <textarea id="fSteps" rows="5" placeholder="First do this.&#10;Then do that.&#10;..."></textarea>
+    </label>
+
+    <div class="form-actions">
+      <button type="button" class="ghost-btn" id="cancelFormBtn">cancel</button>
+      <button type="submit" class="solid-btn">save recipe</button>
+    </div>
+  </form>
+</div>
+
+<!-- Customize panel -->
+<div class="overlay" id="customizeOverlay">
+  <div class="customize-card">
+    <h2 class="form-title">customize your cookbook</h2>
+
+    <label class="customize-field">
+      accent color
+      <input type="color" id="themeAccent" />
+    </label>
+
+    <label class="customize-field">
+      page background
+      <input type="color" id="themeBg" />
+    </label>
+
+    <label class="customize-field">
+      layout
+      <select id="themeLayout">
+        <option value="grid">grid</option>
+        <option value="list">list</option>
+      </select>
+    </label>
+
+    <div class="form-actions">
+      <button type="button" class="ghost-btn" id="resetThemeBtn">reset to default</button>
+      <button type="button" class="solid-btn" id="closeCustomizeBtn">done</button>
+    </div>
+  </div>
+</div>
 
 <script src="recipes.js"></script>
 <script src="script.js"></script>
